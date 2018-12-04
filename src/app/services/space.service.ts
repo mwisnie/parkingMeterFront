@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { tap } from 'rxjs/operators';
+
 import { ParkingSpace } from '../model/model';
 
 const spaceApiAddress = 'http://localhost:8080/api/spaces/';
@@ -40,7 +40,7 @@ export class SpaceService {
       this.getAllSpaces(true);
     });
 
-      // todo: work on cache instead calling getAllSpaces() all the time
+      // potential todo: work on cache instead calling getAllSpaces() all the time
   }
 
   updateSpace(space: ParkingSpace): void {

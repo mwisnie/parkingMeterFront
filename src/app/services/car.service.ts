@@ -8,6 +8,12 @@ const carApiAddress = 'http://localhost:8080/api/cars/';
 const getRequestHeaders = new HttpHeaders({'Access-Control-Allow-Origin': '*'});
 const jsonRequestHeaders = new HttpHeaders({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'});
 
+/*
+* this is actually unused now as I've changed mind about functioning of the API
+* potentially, panel to edit and create Cars could be created
+* registration and DriverType of those Cars could be used for parking
+*/
+
 @Injectable({
   providedIn: 'root'
 })

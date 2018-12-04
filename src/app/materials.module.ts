@@ -8,6 +8,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material';
 import { AddCarDialogComponent } from './components/add-car-dialog/add-car-dialog.component';
 import { SessionDetailDialogComponent } from './components/session-detail-dialog/session-detail-dialog.component';
+import { ModifyCarDialogComponent } from './components/modify-car-dialog/modify-car-dialog.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   imports: [
@@ -18,6 +21,8 @@ import { SessionDetailDialogComponent } from './components/session-detail-dialog
     MatInputModule,
     MatExpansionModule,
     MatDialogModule,
+    MatTooltipModule,
+    MatCardModule
   ],
   exports: [
     BrowserAnimationsModule,
@@ -27,10 +32,12 @@ import { SessionDetailDialogComponent } from './components/session-detail-dialog
     MatInputModule,
     MatExpansionModule,
     MatDialogModule,
-    MatDialogModule
+    MatTooltipModule,
+    MatCardModule
   ],
   entryComponents: [
     AddCarDialogComponent,
+    ModifyCarDialogComponent,
     SessionDetailDialogComponent
   ]
 })

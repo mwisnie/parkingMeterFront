@@ -1,11 +1,10 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { Injectable } from '@angular/core';
+
 import { ParkingSession } from '../model/model';
 import { SpaceService } from './space.service';
 
 const spaceApiAddress = 'http://localhost:8080/api/spaces/';
-const getRequestHeaders = new HttpHeaders({'Access-Control-Allow-Origin': '*'});
 const jsonRequestHeaders = new HttpHeaders({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'});
 
 @Injectable({
@@ -19,7 +18,7 @@ export class SessionService {
   createSession(session: ParkingSession, spaceId: number): void {
     const sessionApiAddress = spaceApiAddress + spaceId + '/sessions';
 
-    // when creating new parking session for certain space, automatically set previous to finished
+    // when creating new parking session for certain space, automatically set previous sessions to finished
     this.spaceService.getSpaceById(spaceId).subscribe(space => {
       const sessionsAssignedToSpace = space.parkingSessions;
       sessionsAssignedToSpace.filter(sess => sess.endTime === null).forEach(sess => {
@@ -39,8 +38,16 @@ export class SessionService {
     const sessionApiAddress = spaceApiAddress + spaceId + '/sessions';
 
     this.http.put<ParkingSession>(sessionApiAddress, session, { headers: jsonRequestHeaders }).subscribe(result => {
-      console.log('Added new session: ' + JSON.stringify(result));
+      console.log('Modified session session: ' + JSON.stringify(result));
       this.spaceService.getAllSpaces(true);
+    });
+  }
+
+  deleteSession(spaceId: number, sessionId: number): void {
+    const sessionApiAddress = spaceApiAddress + spaceId + '/sessions/' + sessionId;
+
+    this.http.delete(sessionApiAddress).subscribe(() => {
+      console.log('Deleted session with id: ' + sessionId);
     });
   }
 

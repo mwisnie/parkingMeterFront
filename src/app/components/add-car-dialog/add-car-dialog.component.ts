@@ -1,10 +1,10 @@
-import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
-import { SpaceService } from 'src/app/services/space.service';
-import { Subscribable, Subscription, Observable } from 'rxjs';
-import { ParkingSpace, ParkingSession } from 'src/app/model/model';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { Observable } from 'rxjs';
+import { ParkingSession, ParkingSpace } from 'src/app/model/model';
 import { SessionService } from 'src/app/services/session.service';
+import { SpaceService } from 'src/app/services/space.service';
 
 @Component({
   selector: 'app-add-car-dialog',

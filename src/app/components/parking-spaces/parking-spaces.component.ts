@@ -21,9 +21,13 @@ export class ParkingSpacesComponent implements OnInit, OnDestroy {
   editedMeter: boolean;
 
   constructor(private spaceService: SpaceService,
-              public addCarDialog: MatDialog) { }
+              public matDialog: MatDialog) { }
 
   ngOnInit() {
+    this.getSpacesData();
+  }
+
+  getSpacesData(): void {
     this.spacesSubscription = this.spaceService.getAllSpaces(true)
       .subscribe(spaces => {
         this.spaces = spaces;
@@ -66,22 +70,22 @@ export class ParkingSpacesComponent implements OnInit, OnDestroy {
   }
 
   openAddCarDialog(spaceId: number) {
-    const dialogRef = this.addCarDialog.open(AddCarDialogComponent, {
+    this.matDialog.open(AddCarDialogComponent, {
       data: { id: spaceId },
       height: '350px',
       width: '420px'
     });
   }
 
-  openSessionDeetailDialog(spaceId: number) {
-    const dialogRef = this.addCarDialog.open(SessionDetailDialogComponent, {
-      data: { id: spaceId },
-      height: '350px',
-      width: '420px'
+  openSessionDetailDialog(spaceId: number) {
+    const detailDialog = this.matDialog.open(SessionDetailDialogComponent, {
+      data: { spaceId: spaceId },
+      height: '430px',
+      width: '600px'
+    });
+    detailDialog.afterClosed().subscribe(closed => {
+      this.getSpacesData();
     });
   }
 
-  logSpaces() {
-    console.log(this.spaces);
-  }
 }

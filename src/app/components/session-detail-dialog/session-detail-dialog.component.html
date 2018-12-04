@@ -1,26 +1,41 @@
+<h2 mat-dialog-title align="center">Parking session details</h2>
 
-    <h2 mat-dialog-title align="center">Add parked car</h2>
-  
-    <mat-dialog-content class="mat-typography">
-    
-      <div class="form-container">
-          {{ activeSession?.id }}
-          {{ activeSession?.parkingSpace }}
-          {{ activeSession?.carRegistration }}
-          {{ activeSession?.tariff }}
-          {{ activeSession?.startTime }}
-          {{ activeSession?.endTime }}
-      </div>
-    </mat-dialog-content>
-  
-    <br>
+<mat-dialog-content class="mat-typography">
+      <table class="table">
 
-    <mat-dialog-actions align="center">
-      <button mat-button color="primary">Add car</button>
-      <button mat-button >Back</button>
-    </mat-dialog-actions>
+          <tbody>
+            <tr>
+              <td>Space name:</td>
+              <td>{{ spaceName }}</td>
+            </tr>
+            <tr>
+              <td>Car registration:</td>
+              <td>{{ activeSession?.carRegistration }}</td>
+            </tr>
+            <tr>
+              <td>Tariff:</td>
+              <td>{{ activeSession?.tariff }}</td>
+            </tr>
+            <tr>
+              <td>Session start:</td>
+              <td>{{ formatDate(activeSession?.startTime) }}</td>
+            </tr>
+            <tr>
+              <td>Current parking cost:</td>
+              <td>{{ currentCost }}</td>
+            </tr>
+          </tbody>
+        </table>        
+</mat-dialog-content>
 
+<br>
 
-
-  <button (click)="test()">test</button>
-  
+<mat-dialog-actions align="center">
+  <button mat-flat-button color="primary" (click)="openModifyCarDialog(activeSession?.id)">Edit parked car</button>
+  &nbsp;
+  <button mat-flat-button color="primary" (click)="finishSession()">Finish session</button>
+  &nbsp;
+  <button mat-flat-button color="danger" (click)="deleteSession(activeSession?.id)">Discard session</button>
+  &nbsp;
+  <button mat-flat-button (click)="close()">Back</button>
+</mat-dialog-actions>

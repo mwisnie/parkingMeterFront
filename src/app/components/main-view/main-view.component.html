@@ -1,12 +1,39 @@
 <mat-tab-group mat-stretch-tabs>
-    <mat-tab label="Spaces"> 
+    <mat-tab label="Spaces and sessions"> 
       <div style="padding-top:50px">
-          <app-parking-spaces></app-parking-spaces>
+        <app-parking-spaces></app-parking-spaces>
+        <app-add-parking-space></app-add-parking-space>
       </div>
     </mat-tab>
-    <mat-tab label="Cars" [disabled]="true">
+    <mat-tab label="Total income">
       <div style="padding-top:50px">
-        <app-cars></app-cars>
+        <app-earnings></app-earnings>
       </div>
     </mat-tab>
+    <mat-tab label="About the app">
+      <div style="padding-top:50px">
+        <mat-card>
+          <mat-card-title>
+            About the app
+          </mat-card-title>
+          <mat-card-content>
+            This is a very simple app intended to work with ParkingMeter REST API: &nbsp;&nbsp; https://github.com/mwisnie/parkingMeter/tree/develop
+            <br><br>
+            Built with Angular 6 and Angular Materials, it allows to: 
+            <br><br>
+            <ul>
+              <li>add, modify and delete parking spaces</li>
+              <li>assign cars to spaces (creating parking sessions associated with spaces)</li>
+              <li>modify parking sessions</li>
+              <li>calculate cost of a session based on it's parameters (session length and tariff)</li>
+              <li>calculate total income from all sessions</li>
+            </ul>
+            <br>
+            It's goal is to illustrate how the API actually works, rather than being actual application for managing parking. 
+            <br><br>
+            Author: Michał Wiśniewski
+          </mat-card-content>
+        </mat-card>
+      </div>
+      </mat-tab>
 </mat-tab-group>
