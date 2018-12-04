@@ -1,0 +1,26 @@
+
+    <h2 mat-dialog-title align="center">Add parked car</h2>
+  
+    <mat-dialog-content class="mat-typography">
+    
+      <div class="form-container">
+          {{ activeSession?.id }}
+          {{ activeSession?.parkingSpace }}
+          {{ activeSession?.carRegistration }}
+          {{ activeSession?.tariff }}
+          {{ activeSession?.startTime }}
+          {{ activeSession?.endTime }}
+      </div>
+    </mat-dialog-content>
+  
+    <br>
+
+    <mat-dialog-actions align="center">
+      <button mat-button color="primary">Add car</button>
+      <button mat-button >Back</button>
+    </mat-dialog-actions>
+
+
+
+  <button (click)="test()">test</button>
+  

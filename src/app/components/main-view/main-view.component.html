@@ -1,3 +1,12 @@
-<p>
-  main-view works!
-</p>
+<mat-tab-group mat-stretch-tabs>
+    <mat-tab label="Spaces"> 
+      <div style="padding-top:50px">
+          <app-parking-spaces></app-parking-spaces>
+      </div>
+    </mat-tab>
+    <mat-tab label="Cars" [disabled]="true">
+      <div style="padding-top:50px">
+        <app-cars></app-cars>
+      </div>
+    </mat-tab>
+</mat-tab-group>

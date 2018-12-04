@@ -1,0 +1,58 @@
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col" width="10%">Id</th>
+            <th scope="col" width="20%">Name</th>
+            <th scope="col" witdh="20%">Meter</th>
+            <th scope="col" width="30%">Parked Car</th>
+            <th scope="col" width="20%">Utilities</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let space of spaces">
+            <tr *ngIf="space.id !== editedIndex">
+                <td> {{ space.id }} </td>
+                <td> {{ space.name }} </td>
+                <td> {{ space.meterOn ? 'On' : 'Off' }} </td>
+                <td>
+                  <ng-container *ngIf="isSpaceTaken(space)">
+                      <button mat-flat-button color="primary" (click)="openSessionDeetailDialog(space.id)">Parking session info</button>
+                    </ng-container>
+                    <ng-container *ngIf="!isSpaceTaken(space)">
+                      <button mat-flat-button color="primary" (click)="openAddCarDialog(space.id)">Add parked car</button>
+                    </ng-container>
+                </td>
+                <td>
+                  <button mat-flat-button color="primary" (click)="setEditedIndex(space.id)">Edit</button>
+                  &nbsp;
+                  <button mat-flat-button color="warn" (click)="deleteSpaceById(space.id)">Delete</button>
+                </td>
+            </tr>
+            <tr *ngIf="space.id === editedIndex">
+                <td> {{ space.id }} </td>
+                <td> 
+                    <mat-form-field>
+                        <input matInput [(ngModel)]="editedName">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <mat-select [(ngModel)]="editedMeter">
+                            <mat-option value="true">On</mat-option>
+                            <mat-option value="false">Off</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+                <td> {{ isSpaceTaken(space) ? 'Taken' : 'Free' }} </td>
+                <td>
+                  <button mat-flat-button color="primary" (click)="finishEdit()"> Save </button> 
+                  <button mat-flat-button color="basic" (click)="cancelEdit()"> Back </button>
+                </td>
+            </tr>
+        </ng-container>
+    </tbody>
+    <br>
+</table>
+<button (click)="logSpaces()">Diagnostic log</button>
+<app-add-parking-space></app-add-parking-space>
