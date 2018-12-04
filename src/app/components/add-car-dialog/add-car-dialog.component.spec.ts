@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ParkingSpaceDetailComponent } from './parking-space-detail.component';
+import { AddCarDialogComponent } from './add-car-dialog.component';
 
-describe('ParkingSpaceDetailComponent', () => {
-  let component: ParkingSpaceDetailComponent;
-  let fixture: ComponentFixture<ParkingSpaceDetailComponent>;
+describe('AddCarDialogComponent', () => {
+  let component: AddCarDialogComponent;
+  let fixture: ComponentFixture<AddCarDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ParkingSpaceDetailComponent ]
+      declarations: [ AddCarDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ParkingSpaceDetailComponent);
+    fixture = TestBed.createComponent(AddCarDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

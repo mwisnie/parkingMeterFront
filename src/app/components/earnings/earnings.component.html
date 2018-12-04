@@ -1,0 +1,13 @@
+
+<mat-card>
+  Total income is: &nbsp; {{ income | async }}
+  <br><br>
+  <button mat-flat-button color="primary" (click)="refresh()">Refresh</button>
+</mat-card>
+<div style="margin-top:50px;">
+  This is total income from existing spaces from open and finished sessions.
+  <br>
+  No currency is implemented.
+  <br>
+  1st hour of stay with DISABLED tariff is free.
+</div>

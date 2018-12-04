@@ -1,3 +1,18 @@
-<p>
-  add-parking-space works!
-</p>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Create new space
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+
+  <div class="add-space">
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="New space name" [(ngModel)]="spaceName">
+      </mat-form-field>
+      &nbsp;&nbsp;&nbsp;
+      <button mat-flat-button color="primary" (click)="createSpace()">Create space</button>
+  </div>
+
+
+</mat-expansion-panel>
+
